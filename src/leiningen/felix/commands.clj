@@ -58,7 +58,9 @@
 (defn setup
   [proj args]
   (download proj args)
-  (unpack proj args))
+  (unpack proj args)
+  (println "Felix setup completed.")
+  (println "You can now start the Felix shell with 'lein felix shell'."))
 
 (defn shell
   [proj args]
