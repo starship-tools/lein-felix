@@ -30,6 +30,7 @@ install of Felix:
    :host "http://apache.claz.org"
    :dist-name "org.apache.felix.main.distribution"}
  :install-dir "felix"
+ :bundle-dir "bundle"
  :jar "bin/felix.jar"
  :script {
     :install-dir "bin"
@@ -55,15 +56,14 @@ $ lein felix help
 
     download            - Download the supported version of the Apache Felix
                           distribution.
-    unpack              - Unzip the compressed distribution file to a location
-                          specified in the configuration (:felix :install-dir).
+    unpack              - Unzip the compressed distribution file to the install
+                          directory.
     script [SUBCOMMAND] - Perform various operations related to the wrapper
-                          script for the felix.jar file; installs to the
-                          location specified by configiuration
-                          (:felix :script :install-dir).
-    install             - Perform the 'download', 'unpack, and optionally,
+                          script for the felix.jar file,
+    install             - Perform the 'download', 'unpack', and
                           'script install' tasks.
     uninstall           - Recursively remove the local Felix install dir.
+    bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
     help                - Display this help message.
 
   Additional help is available for each command via the 'help'

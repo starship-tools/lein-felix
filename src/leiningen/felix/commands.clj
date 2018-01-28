@@ -162,7 +162,7 @@
 
   Allowed subcommands:
     create        - NOT YET IMPLEMENTED - Create an OSGi bundle for the project.
-    install JAR   - NOT YET IMPLEMENTED - Install the given OSGi bundle into Felix.
+    install JAR   - Install the given OSGi bundle into Felix.
     uninstall JAR - NOT YET IMPLEMENTED - Uninstall the given OSGi bundle from the Felix bundle
                     directory.
     help          - Display this help message.

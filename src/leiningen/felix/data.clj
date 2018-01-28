@@ -41,3 +41,9 @@
   (format "%s/%s"
           (get-in proj [:felix :script :install-dir])
           (get-in proj [:felix :script :name])))
+
+(defn bundle-dir
+  [proj]
+  (format "%s/%s"
+          (working-dir proj)
+          (get-in proj [:felix :bundle-dir])))
