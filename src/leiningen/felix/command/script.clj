@@ -1,4 +1,4 @@
-(ns leiningen.felix.script
+(ns leiningen.felix.command.script
   (:require
     [clojure.java.io :as io]
     [leiningen.felix.data :as data]

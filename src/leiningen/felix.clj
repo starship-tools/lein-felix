@@ -36,6 +36,7 @@
     install             - Perform the 'download', 'unpack, and optionally,
                           'script install' tasks.
     uninstall           - Recursively remove the local Felix install dir.
+    bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
     help                - Display this help message.
 
   Additional help is available for each command via the 'help'
@@ -53,6 +54,6 @@
       :script (commands/script proj args)
       :install (commands/install proj args)
       :uninstall (commands/uninstall proj args)
-      ;(docs/print-docstring #'leiningen.felix/felix)
+      :bundle (commands/bundle proj args)
       (util/help #'felix))))
 

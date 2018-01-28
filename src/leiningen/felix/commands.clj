@@ -2,7 +2,8 @@
   (:require
     [leiningen.core.eval :as eval]
     [leiningen.felix.data :as data]
-    [leiningen.felix.script :as script]
+    [leiningen.felix.command.bundle :as bundle]
+    [leiningen.felix.command.script :as script]
     [leiningen.felix.util :as util]))
 
 (defn- -download
@@ -153,3 +154,25 @@
       (println (format "Recursively removing the directory '%s' ..." dir))
       (util/sh (util/get-output-flag args) "rm" "-rfv" dir)
       (script proj (concat ["uninstall"] args)))))
+
+(defn bundle
+  "Usage: lein felix bundle [SUBCOMMAND]
+
+  Perform various operations related to OSGi bundles.
+
+  Allowed subcommands:
+    create        - NOT YET IMPLEMENTED - Create an OSGi bundle for the project.
+    install JAR   - NOT YET IMPLEMENTED - Install the given OSGi bundle into Felix.
+    uninstall JAR - NOT YET IMPLEMENTED - Uninstall the given OSGi bundle from the Felix bundle
+                    directory.
+    help          - Display this help message.
+
+  This command uses the following configuration options:
+
+  * :felix :install-dir"
+  [proj args]
+  (case (util/subcommand args)
+    :create (bundle/create proj args)
+    :install (bundle/install proj args)
+    :uninstall (bundle/uninstall proj args)
+    (util/help #'bundle)))
