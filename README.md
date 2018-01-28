@@ -43,15 +43,34 @@ These may be overridden in a map associated with the key `:felix` in a
 
 ## Usage
 
-This plugin currently supports the following commands:
+This plugin comes with its own help:
 
-* `lein felix download`
-* `lein felix unpack`
-* `lein felix script install`
-* `lein felix script uninstall`
-* `lein felix install` (a combination of the first three commands above)
-* **DANGEROUS**! `lein felix uninstall` (performs an `rm -rf` on whatever direcotyr
-  is configured as the `:felix`,`:install-dir`)
+```
+$ lein felix help
+```
+```
+  Usage: lein felix [COMMAND]
+
+  Supported commands:
+
+    download            - Download the supported version of the Apache Felix
+                          distribution.
+    unpack              - Unzip the compressed distribution file to a location
+                          specified in the configuration (:felix :install-dir).
+    script [SUBCOMMAND] - Perform various operations related to the wrapper
+                          script for the felix.jar file; installs to the
+                          location specified by configiuration
+                          (:felix :script :install-dir).
+    install             - Perform the 'download', 'unpack, and optionally,
+                          'script install' tasks.
+    uninstall           - Recursively remove the local Felix install dir.
+    help                - Display this help message.
+
+  Additional help is available for each command via the 'help'
+  subcommand, e.g.:
+
+    $ lein felix download help
+```
 
 
 ## License
