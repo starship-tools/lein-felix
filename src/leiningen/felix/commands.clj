@@ -109,8 +109,10 @@
     (do
       (download proj args)
       (unpack proj args)
+      (script proj (concat ["install"] args))
       (println "Felix setup completed.")
-      (println "You can now start the Felix shell with 'lein felix shell'."))))
+      (println (format "You can now start the Felix shell with '%s'."
+                       (data/felix-script proj))))))
 
 (defn- shell
   "SUPPORT REMOVED in 0.2.0.
@@ -128,11 +130,11 @@
   (binding [eval/*dir* (data/working-dir proj)]
     (eval/sh "java" "-jar" (data/felix-jar proj))))
 
-(defn clean
-  "Usage: lein felix clean [OPTIONS|SUBCOMMANDS]
+(defn uninstall
+  "Usage: lein felix uninstall [OPTIONS|SUBCOMMANDS]
 
   Allowed options:
-    -v - Display verbose output of clean operation
+    -v - Display verbose output of uninstall operation
 
   Allowed subcommands:
     help - Display this help message.
@@ -146,7 +148,8 @@
   * :felix :install-dir"
   [proj args]
   (case (util/subcommand args)
-    :help (util/help #'clean)
+    :help (util/help #'uninstall)
     (let [dir (data/install-dir proj)]
       (println (format "Recursively removing the directory '%s' ..." dir))
-      (util/sh (util/get-output-flag args) "rm" "-rfv" dir))))
+      (util/sh (util/get-output-flag args) "rm" "-rfv" dir)
+      (script proj (concat ["uninstall"] args)))))

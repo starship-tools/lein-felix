@@ -50,7 +50,7 @@ This plugin currently supports the following commands:
 * `lein felix script install`
 * `lein felix script uninstall`
 * `lein felix install` (a combination of the first three commands above)
-* **DANGEROUS**! `lein felix clean` (performs an `rm -rf` on whatever direcotyr
+* **DANGEROUS**! `lein felix uninstall` (performs an `rm -rf` on whatever direcotyr
   is configured as the `:felix`,`:install-dir`)
 
 

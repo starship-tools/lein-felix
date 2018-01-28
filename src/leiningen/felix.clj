@@ -35,7 +35,7 @@
                           (:felix :script :install-dir).
     install             - Perform the 'download', 'unpack, and optionally,
                           'script install' tasks.
-    clean               - Recursively remove the local Felix install dir.
+    uninstall           - Recursively remove the local Felix install dir.
     help                - Display this help message.
 
   Additional help is available for each command via the 'help'
@@ -52,7 +52,7 @@
       :unpack (commands/unpack proj args)
       :script (commands/script proj args)
       :install (commands/install proj args)
-      :clean (commands/clean proj args)
+      :uninstall (commands/uninstall proj args)
       ;(docs/print-docstring #'leiningen.felix/felix)
       (util/help #'felix))))
 
