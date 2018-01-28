@@ -46,6 +46,8 @@ This plugin currently supports the following commands:
 * `lein felix unpack`
 * `lein felix setup` (a combination of the first two)
 * `lein felix shell`
+* **DANGEROUS**! `lein felix clean` (performs an `rm -rf` on whatever direcotyr
+  is configured as the `:felix`,`:install-dir`)
 
 
 ## License
