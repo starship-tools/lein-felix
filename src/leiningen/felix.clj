@@ -34,5 +34,4 @@
       :download (commands/download proj args)
       :unpack (commands/unpack proj args)
       :setup (commands/setup proj args)
-      :shell (commands/shell proj args)
       :clean (commands/clean proj args))))

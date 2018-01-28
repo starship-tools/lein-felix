@@ -62,7 +62,14 @@
   (println "Felix setup completed.")
   (println "You can now start the Felix shell with 'lein felix shell'."))
 
-(defn shell
+(defn- shell
+  "This is actually broken for running felix's shell, as readline doens't
+  behave ... nor, in fact, do simple operations like copy-and-paste into the
+  shell. Keeping this here for now, just in case we come up with a lein-plugin
+  way to addres this.
+
+  The workaround for this is addressed in the following ticket:
+  * https://github.com/starship-tools/lein-felix/issues/4"
   [proj args]
   (println "Starting Felix shell ...")
   (println "To stop the Felix shell, type ^D\n")
