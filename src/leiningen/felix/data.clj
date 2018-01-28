@@ -31,3 +31,13 @@
 (defn felix-jar
   [proj]
   (get-in proj [:felix :jar]))
+
+(defn felix-script-dir
+  [proj]
+  (get-in proj [:felix :script :install-dir]))
+
+(defn felix-script
+  [proj]
+  (format "%s/%s"
+          (get-in proj [:felix :script :install-dir])
+          (get-in proj [:felix :script :name])))
