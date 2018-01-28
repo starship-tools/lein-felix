@@ -15,7 +15,10 @@
      :version "5.6.10"
      :install-dir "felix"
      :working-dir-tmpl "%s/felix-framework-%s" ; install-dir, version
-     :jar "bin/felix.jar"}})
+     :jar "bin/felix.jar"
+     :script {
+        :install-dir "bin"
+        :name "felix"}}})
 
 (defn felix
   "Usage: lein felix [COMMAND]

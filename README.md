@@ -30,10 +30,10 @@ install of Felix:
    :host "http://apache.claz.org"
    :dist-name "org.apache.felix.main.distribution"}
  :install-dir "felix"
+ :jar "bin/felix.jar"
  :script {
     :install-dir "bin"
-    :name "felix"
-    :jar "bin/felix.jar"}}}
+    :name "felix"}}}
 ```
 
 These may be overridden in a map associated with the key `:felix` in a
