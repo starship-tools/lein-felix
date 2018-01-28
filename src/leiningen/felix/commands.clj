@@ -55,7 +55,19 @@
   (println "Unpacking Felix ...")
   (shell/sh "unzip" "-qq" (zip-filename proj) "-d" (install-dir proj)))
 
-(defn setup
+(defn script-install
+  [proj args]
+  )
+
+(defn script-uninstall
+  [proj args]
+  )
+
+(defn script
+  [proj args]
+  )
+
+(defn install
   [proj args]
   (download proj args)
   (unpack proj args)
@@ -63,7 +75,9 @@
   (println "You can now start the Felix shell with 'lein felix shell'."))
 
 (defn- shell
-  "This is actually broken for running felix's shell, as readline doens't
+  "SUPPORT REMOVED in 0.2.0.
+
+  This is actually broken for running felix's shell, as readline doens't
   behave ... nor, in fact, do simple operations like copy-and-paste into the
   shell. Keeping this here for now, just in case we come up with a lein-plugin
   way to addres this.

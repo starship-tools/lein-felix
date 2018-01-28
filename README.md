@@ -30,7 +30,10 @@ install of Felix:
    :host "http://apache.claz.org"
    :dist-name "org.apache.felix.main.distribution"}
  :install-dir "felix"
- :jar "bin/felix.jar"}}
+ :script {
+    :install-dir "bin"
+    :name "felix"
+    :jar "bin/felix.jar"}}}
 ```
 
 These may be overridden in a map associated with the key `:felix` in a
@@ -44,7 +47,9 @@ This plugin currently supports the following commands:
 
 * `lein felix download`
 * `lein felix unpack`
-* `lein felix setup` (a combination of the first two)
+* `lein felix script install`
+* `lein felix script uninstall`
+* `lein felix install` (a combination of the first three commands above)
 * **DANGEROUS**! `lein felix clean` (performs an `rm -rf` on whatever direcotyr
   is configured as the `:felix`,`:install-dir`)
 
