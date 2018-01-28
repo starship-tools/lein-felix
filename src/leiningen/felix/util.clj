@@ -11,3 +11,6 @@
   [func]
   (println (format "\n  %s\n" (:doc (meta func)))))
 
+(defn subcommand
+  [args]
+  (keyword (first args)))

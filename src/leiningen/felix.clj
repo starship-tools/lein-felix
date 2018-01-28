@@ -33,7 +33,12 @@
     install             - Perform the 'download', 'unpack, and optionally,
                           'script install' tasks.
     clean               - Recursively remove the local Felix install dir.
-    help                - Display this help message."
+    help                - Display this help message.
+
+  Additional help is available for each command via the 'help'
+  subcommand, e.g.:
+
+    $ lein felix download help"
   [proj-orig & [cmd & args]]
   (let [proj-with-profs (lein/project-with-profiles proj-orig)
         proj (util/deep-merge defaults

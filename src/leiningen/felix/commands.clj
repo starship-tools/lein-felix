@@ -1,59 +1,57 @@
 (ns leiningen.felix.commands
   (:require
     [clojure.java.shell :as shell]
-    [leiningen.core.eval :as eval]))
-
-(defn install-dir
-  [proj]
-  (get-in proj [:felix :install-dir]))
-
-(defn working-dir
-  [proj]
-  (format (get-in proj [:felix :working-dir-tmpl])
-          (get-in proj [:felix :install-dir])
-          (get-in proj [:felix :version])))
-
-(defn dist-filename
-  [proj]
-  (format (get-in proj [:felix :download :filename-tmpl])
-          (get-in proj [:felix :download :dist-name])
-          (get-in proj [:felix :version])))
-
-(defn download-url
-  [proj]
-  (format (get-in proj [:felix :download :url-tmpl])
-          (get-in proj [:felix :download :host])
-          (dist-filename proj)))
-
-(defn zip-filename
-  [proj]
-  (format "%s/%s"
-          (install-dir proj)
-          (dist-filename proj)))
-
-(defn felix-jar
-  [proj]
-  (get-in proj [:felix :jar]))
+    [leiningen.core.eval :as eval]
+    [leiningen.felix.data :as data]
+    [leiningen.felix.util :as util]))
 
 (defn- -download
   [proj args]
   (println "Downloading Felix ...")
-  (shell/sh "curl" "-sO" (download-url proj)))
+  (shell/sh "curl" "-sO" (data/download-url proj)))
 
-(defn move
+(defn -move
   [proj args]
-  (shell/sh "mkdir" "-p" (install-dir proj))
-  (shell/sh "mv" (dist-filename proj) (install-dir proj)))
+  (shell/sh "mkdir" "-p" (data/install-dir proj))
+  (shell/sh "mv" (data/dist-filename proj) (data/install-dir proj)))
 
 (defn download
+  "Usage: lein felix download
+
+  Download the Apache Felix distribution of the configured version from the
+  configured mirror.
+
+  This command uses the following configuration options:
+
+  * :felix :download :host
+  * :felix :download :dist-name
+  * :felix :version
+  * :felix :install-dir"
   [proj args]
-  (-download proj args)
-  (move proj args))
+  (case (util/subcommand args)
+    :help (util/help #'download)
+    (do
+      (-download proj args)
+      (-move proj args))))
 
 (defn unpack
+  "Usage: lein felix unpack
+
+  Unzip a downloaded, compressed Apache Felix distribution file.
+
+  This command uses the following configuration options:
+
+  * :felix :download :dist-name
+  * :felix :version
+  * :felix :install-dir"
   [proj args]
-  (println "Unpacking Felix ...")
-  (shell/sh "unzip" "-qq" (zip-filename proj) "-d" (install-dir proj)))
+  (case (util/subcommand args)
+    :help (util/help #'unpack)
+    (do
+      (println "Unpacking Felix ...")
+      (shell/sh "unzip"
+                "-qq" (data/zip-filename proj)
+                "-d" (data/install-dir proj)))))
 
 (defn script-install
   [proj args]
@@ -68,11 +66,20 @@
   )
 
 (defn install
+  "Usage: lein felix install
+
+  Perform the 'download', 'unpack, and optionally, 'script install' tasks
+  by wrapping those commands.
+
+  For configuration options, see the help for the wrapped commands."
   [proj args]
-  (download proj args)
-  (unpack proj args)
-  (println "Felix setup completed.")
-  (println "You can now start the Felix shell with 'lein felix shell'."))
+  (case (util/subcommand args)
+    :help (util/help #'install)
+    (do
+      (download proj args)
+      (unpack proj args)
+      (println "Felix setup completed.")
+      (println "You can now start the Felix shell with 'lein felix shell'."))))
 
 (defn- shell
   "SUPPORT REMOVED in 0.2.0.
@@ -87,11 +94,11 @@
   [proj args]
   (println "Starting Felix shell ...")
   (println "To stop the Felix shell, type ^D\n")
-  (binding [eval/*dir* (working-dir proj)]
-    (eval/sh "java" "-jar" (felix-jar proj))))
+  (binding [eval/*dir* (data/working-dir proj)]
+    (eval/sh "java" "-jar" (data/felix-jar proj))))
 
 (defn clean
   [proj args]
-  (let [dir (install-dir proj)]
+  (let [dir (data/install-dir proj)]
     (println (format "Recursively removing the directory `%s' ..." dir))
-    (shell/sh "rm" "-rf" (install-dir proj))))
+    (shell/sh "rm" "-rf" (data/install-dir proj))))
