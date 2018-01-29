@@ -47,3 +47,7 @@
   (format "%s/%s"
           (working-dir proj)
           (get-in proj [:felix :bundle-dir])))
+
+(defn felix-cache
+  [proj]
+  (format "%s/felix-cache" (working-dir proj)))

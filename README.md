@@ -62,8 +62,9 @@ $ lein felix help
                           script for the felix.jar file,
     install             - Perform the 'download', 'unpack', and
                           'script install' tasks.
-    uninstall           - Recursively remove the local Felix install dir.
+    clean               - Clean up emphemeral Felix files.
     bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
+    uninstall           - Recursively remove the local Felix install dir.
     help                - Display this help message.
 
   Additional help is available for each command via the 'help'
