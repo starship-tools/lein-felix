@@ -47,7 +47,7 @@
   (let [proj-with-profs (lein/project-with-profiles proj-orig)
         proj (util/deep-merge defaults
                               proj-with-profs
-                              (get-in proj-with-profs [:profiles]))]
+                              (or (get-in proj-with-profs [:profiles]) {}))]
     (case (keyword cmd)
       :download (commands/download proj args)
       :unpack (commands/unpack proj args)
