@@ -32,18 +32,18 @@
 
   Supported commands:
 
+    bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
+    clean               - Clean up emphemeral Felix files.
     download            - Download the supported version of the Apache Felix
                           distribution.
-    unpack              - Unzip the compressed distribution file to the install
-                          directory.
-    script [SUBCOMMAND] - Perform various operations related to the wrapper
-                          script for the felix.jar file,
+    help                - Display this help message.
     install             - Perform the 'download', 'unpack', and
                           'script install' tasks.
-    clean               - Clean up emphemeral Felix files.
-    bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
+    script [SUBCOMMAND] - Perform various operations related to the wrapper
+                          script for the felix.jar file,
     uninstall           - Recursively remove the local Felix install dir.
-    help                - Display this help message.
+    unpack              - Unzip the compressed distribution file to the install
+                          directory.
 
   Additional help is available for each command via the 'help'
   subcommand, e.g.:
@@ -55,12 +55,11 @@
                               proj-with-profs
                               (or (get-in proj-with-profs [:profiles]) {}))]
     (case (keyword cmd)
-      :download (download/run proj args)
-      :unpack (unpack/run proj args)
-      :script (script/run proj args)
-      :install (install/run proj args)
       :bundle (bundle/run proj args)
       :clean (clean/run proj args)
+      :download (download/run proj args)
+      :install (install/run proj args)
+      :script (script/run proj args)
       :uninstall (uninstall/run proj args)
+      :unpack (unpack/run proj args)
       (util/help #'felix))))
-
