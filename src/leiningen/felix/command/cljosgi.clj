@@ -32,7 +32,10 @@
 (defn install
   "Usage: lein felix clojure-osgi install JAR|[OPTIONS|SUBCOMMANDS]
 
-  Install the Clojure OSGi bundle into Felix.
+  Install the Clojure OSGi bundle into Felix. Note that this command ultimately
+  depends upon the project which has included `lein-felix` as a plugin
+  dependency: if that project does not also include the `clojure.osgi`
+  dependency, this install step will fail.
 
   Allowed options:
     -v - Display verbose output of install operation
