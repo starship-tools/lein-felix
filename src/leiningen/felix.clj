@@ -1,7 +1,13 @@
 (ns leiningen.felix
   (:require
     [leiningen.core.project :as lein]
-    [leiningen.felix.commands :as commands]
+    [leiningen.felix.command.bundle :as bundle]
+    [leiningen.felix.command.clean :as clean]
+    [leiningen.felix.command.download :as download]
+    [leiningen.felix.command.install :as install]
+    [leiningen.felix.command.script :as script]
+    [leiningen.felix.command.uninstall :as uninstall]
+    [leiningen.felix.command.unpack :as unpack]
     [leiningen.felix.util :as util]))
 
 (def defaults
@@ -49,12 +55,12 @@
                               proj-with-profs
                               (or (get-in proj-with-profs [:profiles]) {}))]
     (case (keyword cmd)
-      :download (commands/download proj args)
-      :unpack (commands/unpack proj args)
-      :script (commands/script proj args)
-      :install (commands/install proj args)
-      :bundle (commands/bundle proj args)
-      :clean (commands/clean proj args)
-      :uninstall (commands/uninstall proj args)
+      :download (download/run proj args)
+      :unpack (unpack/run proj args)
+      :script (script/run proj args)
+      :install (install/run proj args)
+      :bundle (bundle/run proj args)
+      :clean (clean/run proj args)
+      :uninstall (uninstall/run proj args)
       (util/help #'felix))))
 
