@@ -3,6 +3,7 @@
     [leiningen.core.project :as lein]
     [leiningen.felix.command.bundle :as bundle]
     [leiningen.felix.command.clean :as clean]
+    [leiningen.felix.command.cljosgi :as cljosgi]
     [leiningen.felix.command.download :as download]
     [leiningen.felix.command.install :as install]
     [leiningen.felix.command.script :as script]
@@ -32,18 +33,21 @@
 
   Supported commands:
 
-    bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
-    clean               - Clean up emphemeral Felix files.
-    download            - Download the supported version of the Apache Felix
-                          distribution.
-    help                - Display this help message.
-    install             - Perform the 'download', 'unpack', and
-                          'script install' tasks.
-    script [SUBCOMMAND] - Perform various operations related to the wrapper
-                          script for the felix.jar file,
-    uninstall           - Recursively remove the local Felix install dir.
-    unpack              - Unzip the compressed distribution file to the install
-                          directory.
+    bundle [SUBCOMMAND]       - Perform various operations related to OSGi
+                                bundles.
+    clean                     - Clean up emphemeral Felix files.
+    clojure-osgi [SUBCOMMAND] - Pergform various operations related to Clojure
+                                OSGi support.
+    download                  - Download the supported version of the Apache
+                                Felix distribution.
+    help                      - Display this help message.
+    install                   - Perform the 'download', 'unpack', and
+                                'script install' tasks.
+    script [SUBCOMMAND]       - Perform various operations related to the
+                                wrapper script for the felix.jar file,
+    uninstall                 - Recursively remove the local Felix install dir.
+    unpack                    - Unzip the compressed distribution file to the
+                                install directory.
 
   Additional help is available for each command via the 'help'
   subcommand, e.g.:
@@ -57,6 +61,7 @@
     (case (keyword cmd)
       :bundle (bundle/run proj args)
       :clean (clean/run proj args)
+      :clojure-osgi (cljosgi/run proj args)
       :download (download/run proj args)
       :install (install/run proj args)
       :script (script/run proj args)
