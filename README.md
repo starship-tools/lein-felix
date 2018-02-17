@@ -54,18 +54,22 @@ $ lein felix help
 
   Supported commands:
 
-    download            - Download the supported version of the Apache Felix
-                          distribution.
-    unpack              - Unzip the compressed distribution file to the install
-                          directory.
-    script [SUBCOMMAND] - Perform various operations related to the wrapper
-                          script for the felix.jar file,
-    install             - Perform the 'download', 'unpack', and
-                          'script install' tasks.
-    clean               - Clean up emphemeral Felix files.
-    bundle [SUBCOMMAND] - Perform various operations related to OSGi bundles.
-    uninstall           - Recursively remove the local Felix install dir.
-    help                - Display this help message.
+    bundle [SUBCOMMAND]       - Perform various operations related to OSGi
+                                bundles.
+    clean                     - Clean up emphemeral Felix files.
+    clojure-osgi [SUBCOMMAND] - Pergform various operations related to Clojure
+                                OSGi support.
+    download                  - Download the supported version of the Apache
+                                Felix distribution.
+    help                      - Display this help message.
+    install                   - Perform the 'download', 'unpack',
+                                'script install', and 'clojure-osgi install'
+                                tasks.
+    script [SUBCOMMAND]       - Perform various operations related to the
+                                wrapper script for the felix.jar file,
+    uninstall                 - Recursively remove the local Felix install dir.
+    unpack                    - Unzip the compressed distribution file to the
+                                install directory.
 
   Additional help is available for each command via the 'help'
   subcommand, e.g.:
