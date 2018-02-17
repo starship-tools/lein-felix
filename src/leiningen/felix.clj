@@ -41,8 +41,9 @@
     download                  - Download the supported version of the Apache
                                 Felix distribution.
     help                      - Display this help message.
-    install                   - Perform the 'download', 'unpack', and
-                                'script install' tasks.
+    install                   - Perform the 'download', 'unpack',
+                                'script install', and 'clojure-osgi install'
+                                tasks.
     script [SUBCOMMAND]       - Perform various operations related to the
                                 wrapper script for the felix.jar file,
     uninstall                 - Recursively remove the local Felix install dir.
