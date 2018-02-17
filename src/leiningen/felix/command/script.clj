@@ -57,3 +57,25 @@
     (let [script (data/felix-script proj)]
       (println (format "Removing '%s' ..." script))
       (util/sh (util/get-output-flag (rest args)) "rm" "-v" script))))
+
+(defn run
+  "Usage: lein felix script [SUBCOMMAND]
+
+  Manage the installation of a felix shell script that wraps calls to the
+  felix.jar distribution file
+
+  Supported subcommands:
+
+    install   - Create the 'felix' script in the configured directory.
+    uninstall - Delete the 'felix' script from the configured directory.
+    help      - Display this help message.
+
+  Additional help is available for each subcommand via the 'help'
+  subcommand, e.g.:
+
+    $ lein felix script install help"
+  [proj args]
+  (case (util/subcommand args)
+    :install (install proj args)
+    :uninstall (uninstall proj args)
+    (util/help #'run)))

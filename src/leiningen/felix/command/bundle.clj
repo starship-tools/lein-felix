@@ -64,3 +64,25 @@
                "rm" "-v" (format "%s/%s"
                                  (data/bundle-dir proj)
                                  jar)))))
+
+(defn run
+  "Usage: lein felix bundle [SUBCOMMAND]
+
+  Perform various operations related to OSGi bundles.
+
+  Allowed subcommands:
+    create        - NOT YET IMPLEMENTED - Create an OSGi bundle for the project.
+    install JAR   - Install the given OSGi bundle into Felix.
+    uninstall JAR - Uninstall the given OSGi bundle from the Felix bundle
+                    directory.
+    help          - Display this help message.
+
+  This command uses the following configuration options:
+
+  * :felix :install-dir"
+  [proj args]
+  (case (util/subcommand args)
+    :create (create proj args)
+    :install (install proj args)
+    :uninstall (uninstall proj args)
+    (util/help #'run)))
