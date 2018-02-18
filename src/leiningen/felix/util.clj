@@ -44,3 +44,7 @@
       :verbose (when-let [out (get-output result :out)] (println out))
       :quiet (when-let [out (get-output result :out)] (lein/debug out)))
     (when-let [err (get-output result :err)] (println err))))
+
+(defn jarball
+  [proj]
+  (format "%s-%s.jar" (:name proj) (:version proj)))
