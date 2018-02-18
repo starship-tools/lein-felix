@@ -1,22 +1,19 @@
 (ns leiningen.felix.command.bundle
   (:require
+    [leiningen.felix.command.pom :as pom]
     [leiningen.felix.data :as data]
     [leiningen.felix.util :as util]))
 
 (defn create
   "Usage: lein felix bundle create
 
-  Create an OSGi bundle for the project.
-
-  Note that this command requires that a bundle-ready pom.xml file be present
-  in the project directory. To create one, use the following comamnd:
-
-    $ lein felix pom"
+  Create an OSGi bundle for the project."
   [proj args]
   (case (util/subcommand args)
     :help (util/help #'create)
     (let [jar (first args)
           option [(second args)]]
+      (pom/run proj (conj ["create"] args))
       (util/sh (util/get-output-flag option)
                "mvn" "-e" "org.apache.felix:maven-bundle-plugin:bundle"))))
 
