@@ -65,6 +65,8 @@ $ lein felix help
     install                   - Perform the 'download', 'unpack',
                                 'script install', and 'clojure-osgi install'
                                 tasks.
+    pom                       - Generate a maven-bundle-plugin ready 'pom.xml'
+                                file.
     script [SUBCOMMAND]       - Perform various operations related to the
                                 wrapper script for the felix.jar file,
     uninstall                 - Recursively remove the local Felix install dir.
@@ -74,7 +76,7 @@ $ lein felix help
   Additional help is available for each command via the 'help'
   subcommand, e.g.:
 
-    $ lein felix download help
+    $ lein felix download help"
 ```
 
 
