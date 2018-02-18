@@ -6,6 +6,7 @@
     [leiningen.felix.command.cljosgi :as cljosgi]
     [leiningen.felix.command.download :as download]
     [leiningen.felix.command.install :as install]
+    [leiningen.felix.command.pom :as pom]
     [leiningen.felix.command.script :as script]
     [leiningen.felix.command.uninstall :as uninstall]
     [leiningen.felix.command.unpack :as unpack]
@@ -25,8 +26,12 @@
      :bundle-dir "bundle"
      :jar "bin/felix.jar"
      :script {
-        :install-dir "bin"
-        :name "felix"}}})
+       :install-dir "bin"
+       :name "felix"}}
+     :maven {
+       :configuration {
+         :namespaces []
+         :instructions []}}})
 
 (defn felix
   "Usage: lein felix [COMMAND]
@@ -44,6 +49,8 @@
     install                   - Perform the 'download', 'unpack',
                                 'script install', and 'clojure-osgi install'
                                 tasks.
+    pom                       - Generate a maven-bundle-plugin ready 'pom.xml'
+                                file.
     script [SUBCOMMAND]       - Perform various operations related to the
                                 wrapper script for the felix.jar file,
     uninstall                 - Recursively remove the local Felix install dir.
@@ -65,6 +72,7 @@
       :clojure-osgi (cljosgi/run proj args)
       :download (download/run proj args)
       :install (install/run proj args)
+      :pom (pom/run proj args)
       :script (script/run proj args)
       :uninstall (uninstall/run proj args)
       :unpack (unpack/run proj args)
