@@ -8,14 +8,17 @@
 
   Create an OSGi bundle for the project.
 
-  This command uses the following configuration options:
+  Note that this command requires that a bundle-ready pom.xml file be present
+  in the project directory. To create one, use the following comamnd:
 
-  * :felix :install-dir"
+    $ lein felix pom"
   [proj args]
   (case (util/subcommand args)
     :help (util/help #'create)
-    (do
-      )))
+    (let [jar (first args)
+          option [(second args)]]
+      (util/sh (util/get-output-flag option)
+               "mvn" "-e" "org.apache.felix:maven-bundle-plugin:bundle"))))
 
 (defn install
   "Usage: lein felix bundle install JAR|[OPTIONS|SUBCOMMANDS]
@@ -71,7 +74,7 @@
   Perform various operations related to OSGi bundles.
 
   Allowed subcommands:
-    create        - NOT YET IMPLEMENTED - Create an OSGi bundle for the project.
+    create        - Create an OSGi bundle for the project.
     install JAR   - Install the given OSGi bundle into Felix.
     uninstall JAR - Uninstall the given OSGi bundle from the Felix bundle
                     directory.
