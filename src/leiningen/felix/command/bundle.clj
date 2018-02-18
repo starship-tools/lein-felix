@@ -13,7 +13,7 @@
     :help (util/help #'create)
     (let [jar (first args)
           option [(second args)]]
-      (pom/run proj (conj ["create"] args))
+      (pom/run proj args)
       (util/sh (util/get-output-flag option)
                "mvn" "-e" "org.apache.felix:maven-bundle-plugin:bundle"))))
 

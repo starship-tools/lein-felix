@@ -68,12 +68,13 @@
   [proj args]
   (let [pom-location-or-properties (io/file (:pom-location proj) "pom.xml")
         pom (make-pom proj)
-        pom-file (io/file (:root proj) pom-location-or-properties)]
+        pom-file (io/file (:root proj) pom-location-or-properties)
+        option [(second args)]]
     (.mkdirs (.getParentFile pom-file))
     (with-open [pom-writer (io/writer pom-file)]
       (.write pom-writer pom))
-    (main/info "Wrote" (str pom-file) "with OSGi bundle configuration.")
-    (.getAbsolutePath pom-file)))
+    (when (= :verbose (util/get-output-flag option))
+      (main/info "Wrote" (str pom-file) "with OSGi bundle configuration."))))
 
 (defn delete
   [proj args]
