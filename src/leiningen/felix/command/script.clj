@@ -7,8 +7,8 @@
 (defn- get-script-content
   [proj]
   (format (str "#!/bin/sh\n\n"
-               "echo; echo \"Starting Felix shell ...\"\n"
-               "echo \"To exit the Felix shell, type ^D\"\n"
+               "echo; echo \"Starting Gogo, the Felix shell ...\"\n"
+               "echo \"To exit Gogo, type ^D\"\n"
                "echo; cd %s && java -jar %s \"$@\"\n")
           (data/working-dir proj)
           (data/felix-jar proj)))
