@@ -8,19 +8,11 @@
 
 (def clojure-osgi-id 'com.theoryinpractise/clojure.osgi)
 
-(defn- get-clojure-osgi-version
-  [proj]
-  (->> proj
-       :dependencies
-       (map #(when (= (first %) clojure-osgi-id) (second %)))
-       (remove nil?)
-       first))
-
 (defn- get-clojure-osgi-jarname
   [proj]
   (format "%s-%s.jar"
           (second (string/split (str clojure-osgi-id) #"/"))
-          (get-clojure-osgi-version proj)))
+          (util/get-dep-version proj clojure-osgi-id)))
 
 (defn- get-clojure-osgi-jar
   [proj]
