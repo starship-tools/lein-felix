@@ -14,6 +14,8 @@
 
 (def defaults
   {:felix {
+     :framework {
+       :id 'org.apache.felix/org.apache.felix.framework}
      :download {
        :host "http://apache.claz.org"
        :dist-name "org.apache.felix.main.distribution"
@@ -27,11 +29,9 @@
      :jar "bin/felix.jar"
      :script {
        :install-dir "bin"
-       :name "felix"}}
-     :maven {
-       :configuration {
-         :namespaces []
-         :instructions []}}})
+       :name "felix"}
+     :clojure-osgi {
+       :id 'com.theoryinpractise/clojure.osgi}}})
 
 (defn felix
   "Usage: lein felix [COMMAND]
