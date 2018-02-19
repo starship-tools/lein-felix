@@ -6,13 +6,11 @@
     [leiningen.felix.data :as data]
     [leiningen.felix.util :as util]))
 
-(def clojure-osgi-id 'com.theoryinpractise/clojure.osgi)
-
 (defn- get-clojure-osgi-jarname
   [proj]
   (format "%s-%s.jar"
-          (second (string/split (str clojure-osgi-id) #"/"))
-          (util/get-dep-version proj clojure-osgi-id)))
+          (second (string/split (str (data/clojure-osgi-id proj)) #"/"))
+          (data/clojure-osgi-version proj)))
 
 (defn- get-clojure-osgi-jar
   [proj]
@@ -42,11 +40,10 @@
   [proj [subcommand & args]]
   (case (util/subcommand subcommand)
     :help (util/help #'install)
-    (let [version (get-clojure-osgi-version proj)
-          jar (get-clojure-osgi-jar proj)
-          option [(first args)]]
+    (let [jar (get-clojure-osgi-jar proj)
+          option args]
       (util/sh (util/get-output-flag option)
-                 "cp" "-v" jar (data/bundle-dir proj)))))
+               "cp" "-v" jar (data/bundle-dir proj)))))
 
 (defn uninstall
   "Usage: lein felix clojure-osgi uninstall JAR|[OPTIONS|SUBCOMMANDS]
@@ -67,7 +64,7 @@
   (case (util/subcommand subcommand)
     :help (util/help #'install)
     (let [jar (get-clojure-osgi-jarname proj)
-          option [(first args)]]
+          option args]
       (util/sh (util/get-output-flag option)
                "rm" "-v" (format "%s/%s"
                                  (data/bundle-dir proj)

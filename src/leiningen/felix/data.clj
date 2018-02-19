@@ -1,20 +1,30 @@
-(ns leiningen.felix.data)
+(ns leiningen.felix.data
+  (:require
+    [leiningen.felix.util :as util]))
 
 (defn install-dir
   [proj]
   (get-in proj [:felix :install-dir]))
 
+(defn felix-framework-id
+  [proj]
+  (get-in proj [:felix :framework :id]))
+
+(defn felix-framework-version
+  [proj]
+  (util/get-dep-version proj (felix-framework-id proj)))
+
 (defn working-dir
   [proj]
   (format (get-in proj [:felix :working-dir-tmpl])
           (get-in proj [:felix :install-dir])
-          (get-in proj [:felix :version])))
+          (felix-framework-version proj)))
 
 (defn dist-filename
   [proj]
   (format (get-in proj [:felix :download :filename-tmpl])
           (get-in proj [:felix :download :dist-name])
-          (get-in proj [:felix :version])))
+          (felix-framework-version proj)))
 
 (defn download-url
   [proj]
@@ -51,3 +61,11 @@
 (defn felix-cache
   [proj]
   (format "%s/felix-cache" (working-dir proj)))
+
+(defn clojure-osgi-id
+  [proj]
+  (get-in proj [:felix :clojure-osgi :id]))
+
+(defn clojure-osgi-version
+  [proj]
+  (util/get-dep-version proj (clojure-osgi-id proj)))
