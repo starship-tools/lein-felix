@@ -48,3 +48,13 @@
 (defn jarball
   [proj]
   (format "%s-%s.jar" (:name proj) (:version proj)))
+
+(defn get-dep-version
+  "Given a lein project data structure and a 'group/artifact' formatted
+  dependency, return the version of the dependency."
+  [proj dep-symbol]
+  (->> proj
+       :dependencies
+       (map #(when (= (first %) dep-symbol) (second %)))
+       (remove nil?)
+       first))
