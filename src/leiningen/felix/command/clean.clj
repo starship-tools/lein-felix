@@ -6,7 +6,7 @@
 (defn run
   "Usage: lein felix clean
 
-  Clean up emphemeral Felix files.
+  Completely remove the 'felix-cache' directory and files.
 
   Allowed options:
     -v - Display verbose output of clean operation
