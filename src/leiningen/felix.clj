@@ -17,12 +17,12 @@
      :framework {
        :id 'org.apache.felix/org.apache.felix.framework}
      :download {
-       :host "https://apache.claz.org"
+       :host "https://archive.apache.org"
        :dist-name "org.apache.felix.main.distribution"
        :filename-tmpl "%s-%s.zip" ; dist-name, version
-       :url-tmpl "%s/felix/%s" ; host, dist-filename
+       :url-tmpl "%s/dist/felix/%s" ; host, dist-filename
        }
-     :version "6.0.1"
+     :version "5.6.10"
      :install-dir "felix"
      :working-dir-tmpl "%s/felix-framework-%s" ; install-dir, version
      :bundle-dir "bundle"
@@ -31,7 +31,7 @@
        :install-dir "bin"
        :name "felix"}
      :clojure-osgi {
-       :id 'com.theoryinpractise/clojure.osgi}}})
+       :id 'clojusc/osgi}}})
 
 (defn felix
   "Usage: lein felix [COMMAND]
