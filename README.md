@@ -21,10 +21,10 @@ Felix-based OSGi bundles.
 The following lein-felix release correspond to different Apache Felix, Clojure,
 and clojure.osgi releases:
 
-| lein-felix     | Apache Felix        | Clojure | clojure.osgi |
-|----------------|---------------------|---------|--------------|
-| 0.3.0          | 6.0.1               | 1.9.0   | 1.9.0-2      |
-| 0.1.0, 0.2.0   | 5.6.10              | 1.8.0   | 1.8.0-1      |
+| lein-felix     | Apache Felix | Apache Maven Bundle Plugin | Clojure | clojure.osgi |
+|----------------|--------------|----------------------------|---------|--------------|
+| 0.3.0          | 6.0.1        | 3.5.1                      | 1.9.0   | 1.9.0-2      |
+| 0.1.0, 0.2.0   | 5.6.10       | 3.5.0                      | 1.8.0   | 1.8.0-1      |
 
 
 ## Dependencies
