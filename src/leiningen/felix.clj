@@ -22,7 +22,7 @@
        :filename-tmpl "%s-%s.zip" ; dist-name, version
        :url-tmpl "%s/felix/%s" ; host, dist-filename
        }
-     :version "5.6.10"
+     :version "6.0.1"
      :install-dir "felix"
      :working-dir-tmpl "%s/felix-framework-%s" ; install-dir, version
      :bundle-dir "bundle"
