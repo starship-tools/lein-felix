@@ -28,8 +28,8 @@
       (zip/root loc)
       (if-let [matcher-result (matcher loc)]
         (let [new-loc (zip/edit loc editor)]
-          (if (not (= (zip/node new-loc) (zip/node loc)))
-            (recur (zip/next new-loc))))
+          (when-not (= (zip/node new-loc) (zip/node loc)))
+            (recur (zip/next new-loc)))
         (recur (zip/next loc))))))
 
 (defn plugins-tag? [loc]

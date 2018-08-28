@@ -20,6 +20,5 @@
   [proj args]
   (case (util/subcommand args)
     :help (util/help #'run)
-    (do
-      (util/sh (util/get-output-flag args)
-               "rm" "-rfv" (data/felix-cache proj)))))
+    (util/sh (util/get-output-flag args)
+             "rm" "-rfv" (data/felix-cache proj))))
