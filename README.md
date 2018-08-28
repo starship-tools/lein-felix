@@ -1,6 +1,13 @@
 # lein-felix
 
+[![Build Status][travis-badge]][travis]
+[![Dependencies Status][deps-badge]][deps]
+[![Clojars Project][clojars-badge]][clojars]
+
+
 *A lein plugin for the Apache Felix OSGi project*
+
+[![Project logo][logo]][logo-link]
 
 This project provides a Clojure `lein` plugin for working with Apache Felix
 projects and performing OSGi tasks related to the OSGi framework. The meat
@@ -121,9 +128,9 @@ here:
 Note that in addition to Apache Felix itself, this `lein` plugin relies heavily
 upon the following (under the covers):
 
-* The original [clojure.osgi](https://github.com/aav/clojure.osgi)
-* [Mark Derricutt](https://github.com/talios)'s fork of [clojure.osgi](https://github.com/talios/clojure.osgi)
-* The Apache Felix Project's [Maven Bundle Plugin](http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html)
+* The original [clojure.osgi][orig-clj-osgi]
+* [Mark Derricutt](https://github.com/talios)'s fork of [clojure.osgi][clj-osgi]
+* The Apache Felix Project's [Maven Bundle Plugin][mvn-felix]
 
 
 ## License
@@ -131,3 +138,18 @@ upon the following (under the covers):
 Copyright © 2017-2018, Starship Hackers
 
 Licensed under the Apache License, Version 2.0.
+
+
+<!-- Named page links below: /-->
+
+[logo]: https://raw.githubusercontent.com/starship-tools/lein-felix/master/resources/images/apache-felix-osgi.png
+[logo-link]: https://felix.apache.org/
+[travis]: https://travis-ci.org/starship-tools/lein-felix
+[travis-badge]: https://travis-ci.org/starship-tools/lein-felix.png?branch=master
+[deps]: http://jarkeeper.com/starship-tools/lein-felix
+[deps-badge]: http://jarkeeper.com/starship-tools/lein-felix/status.svg
+[clojars]: https://clojars.org/lein-felix/lein-felix
+[clojars-badge]: https://img.shields.io/clojars/v/lein-felix/lein-felix.svg
+[orig-clj-osgi]: https://github.com/aav/clojure.osgi
+[clj-osgi]: https://github.com/talios/clojure.osgi
+[mvn-felix]: http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html
