@@ -6,7 +6,11 @@
 (defn- -download
   [proj args]
   (println "Downloading Felix ...")
-  (util/sh (util/get-output-flag args) "curl" "-sO" (data/download-url proj)))
+  (util/sh (util/get-output-flag args)
+           "curl"
+           "-sO"
+           "--ssl"
+           (data/download-url proj)))
 
 (defn -move
   [proj args]
