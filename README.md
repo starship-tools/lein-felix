@@ -87,6 +87,38 @@ $ lein felix help
 ```
 
 
+As indicated in the `help` output, each subcommand has its own `help` as well,
+e.g.:
+
+```
+$ lein felix bundle help
+```
+```
+  Usage: lein felix bundle [SUBCOMMAND]
+
+  Perform various operations related to OSGi bundles.
+
+  Allowed subcommands:
+    create    - Create an OSGi bundle for the project.
+    install   - Install the project JAR as an OSGi bundle into Felix.
+    uninstall - Uninstall the project's OSGi bundle from the Felix bundle
+                directory.
+    help      - Display this help message.
+
+  This command uses the following configuration options:
+
+  * :felix :install-dir
+```
+
+
+## Examples
+
+If you'd like to see `lein-felix` in action, you can view the example projects
+here:
+
+* https://github.com/starship-tools/farana/tree/master/examples
+
+
 ## License
 
 Copyright © 2017-2018, Starship Hackers
