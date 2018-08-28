@@ -26,8 +26,7 @@
     (if-not output
       output
       (let [output (string/trim output)]
-        (if (= "" output)
-          nil
+        (when-not (= "" output)
           output)))))
 
 (defn get-output-flag
