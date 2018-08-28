@@ -25,16 +25,16 @@ install of Felix:
 
 ```clj
 {:felix {
- :version "5.6.10"
- :download {
-   :host "http://apache.claz.org"
-   :dist-name "org.apache.felix.main.distribution"}
- :install-dir "felix"
- :bundle-dir "bundle"
- :jar "bin/felix.jar"
- :script {
-    :install-dir "bin"
-    :name "felix"}}}
+   :version "5.6.10"
+   :download {
+     :host "http://apache.claz.org"
+     :dist-name "org.apache.felix.main.distribution"}
+   :install-dir "felix"
+   :bundle-dir "bundle"
+   :jar "bin/felix.jar"
+   :script {
+      :install-dir "bin"
+      :name "felix"}}}
 ```
 
 These may be overridden in a map associated with the key `:felix` in a
