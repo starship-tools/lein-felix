@@ -17,7 +17,7 @@
      :framework {
        :id 'org.apache.felix/org.apache.felix.framework}
      :download {
-       :host "http://apache.claz.org"
+       :host "https://apache.claz.org"
        :dist-name "org.apache.felix.main.distribution"
        :filename-tmpl "%s-%s.zip" ; dist-name, version
        :url-tmpl "%s/felix/%s" ; host, dist-filename
