@@ -16,6 +16,17 @@ system shell commands necessary for the smooth installtion and operation of
 Felix-based OSGi bundles.
 
 
+## Versions
+
+The following lein-felix release correspond to different Apache Felix, Clojure,
+and clojure.osgi releases:
+
+| lein-felix     | Apache Felix        | Clojure | clojure.osgi |
+|----------------|---------------------|---------|--------------|
+| 0.3.0          | 6.0.1               | 1.9.0   | 1.9.0-2      |
+| 0.1.0, 0.2.0   | 5.6.10              | 1.8.0   | 1.8.0-1      |
+
+
 ## Dependencies
 
 This plugin shells out to the system and expects the following binary
@@ -35,17 +46,19 @@ The following is the default map used to create and interact with a local
 install of Felix:
 
 ```clj
-{:felix {
-   :version "5.6.10"
-   :download {
-     :host "http://apache.claz.org"
-     :dist-name "org.apache.felix.main.distribution"}
-   :install-dir "felix"
-   :bundle-dir "bundle"
-   :jar "bin/felix.jar"
-   :script {
-      :install-dir "bin"
-      :name "felix"}}}
+  {:felix {
+     :framework {
+       :id 'org.apache.felix/org.apache.felix.framework}
+     :download {
+       :host "http://apache.claz.org"
+       :dist-name "org.apache.felix.main.distribution"}
+     :version "6.0.1"
+     :jar "bin/felix.jar"
+     :script {
+       :install-dir "bin"
+       :name "felix"}
+     :clojure-osgi {
+       :id 'com.theoryinpractise/clojure.osgi}}})
 ```
 
 These may be overridden in a map associated with the key `:felix` in a
