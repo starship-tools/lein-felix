@@ -3,13 +3,10 @@
 *A lein plugin for the Apache Felix OSGi project*
 
 This project provides a Clojure `lein` plugin for working with Apache Felix
-projects and performing OSGi tasks related to the OSGi framework.
-
-Note that in addition to Apache Felix itself, this `lein` plugin relies heavily
-upon the following (under the covers):
-
-* [Mark Derricutt](https://github.com/talios)'s fork of [clojure.osgi](https://github.com/talios/clojure.osgi) (for which we are eternally grateful)
-* The Apache Felix Project's [Maven Bundle Plugin](http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html)
+projects and performing OSGi tasks related to the OSGi framework. The meat
+of this plugin is a sane default configuration and wrappers for various
+system shell commands necessary for the smooth installtion and operation of
+Felix-based OSGi bundles.
 
 
 ## Dependencies
@@ -117,6 +114,16 @@ If you'd like to see `lein-felix` in action, you can view the example projects
 here:
 
 * https://github.com/starship-tools/farana/tree/master/examples
+
+
+## Related Projects
+
+Note that in addition to Apache Felix itself, this `lein` plugin relies heavily
+upon the following (under the covers):
+
+* The original [clojure.osgi](https://github.com/aav/clojure.osgi)
+* [Mark Derricutt](https://github.com/talios)'s fork of [clojure.osgi](https://github.com/talios/clojure.osgi)
+* The Apache Felix Project's [Maven Bundle Plugin](http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html)
 
 
 ## License
