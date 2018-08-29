@@ -50,7 +50,7 @@ install of Felix:
      :framework {
        :id 'org.apache.felix/org.apache.felix.framework}
      :download {
-       :host "http://apache.claz.org"
+       :host "https://archive.apache.org"
        :dist-name "org.apache.felix.main.distribution"}
      :version "5.6.10"
      :jar "bin/felix.jar"
