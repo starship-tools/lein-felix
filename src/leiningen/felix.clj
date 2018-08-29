@@ -31,7 +31,7 @@
        :install-dir "bin"
        :name "felix"}
      :clojure-osgi {
-       :id 'clojusc/osgi}}})
+       :id 'com.theoryinpractise/clojure.osgi}}})
 
 (defn felix
   "Usage: lein felix [COMMAND]
