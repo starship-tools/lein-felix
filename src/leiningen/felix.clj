@@ -24,6 +24,7 @@
        }
      :version "5.6.10"
      :install-dir "felix"
+     :cache-dir "~/.lein-felix/felix"
      :working-dir-tmpl "%s/felix-framework-%s" ; install-dir, version
      :bundle-dir "bundle"
      :jar "bin/felix.jar"

@@ -1,6 +1,14 @@
 (ns leiningen.felix.data
   (:require
+    [clojure.string :as string]
     [leiningen.felix.util :as util]))
+
+(defn cache-dir
+  [proj]
+  (string/replace
+    (get-in proj [:felix :cache-dir])
+    #"^~"
+    (System/getProperty "user.home")))
 
 (defn install-dir
   [proj]
@@ -25,6 +33,10 @@
   (format (get-in proj [:felix :download :filename-tmpl])
           (get-in proj [:felix :download :dist-name])
           (felix-framework-version proj)))
+
+(defn cached-felix
+  [proj]
+  (format "%s/%s" (cache-dir proj) (dist-filename proj)))
 
 (defn download-url
   [proj]

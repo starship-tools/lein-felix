@@ -1,5 +1,6 @@
 (ns leiningen.felix.command.download
   (:require
+    [clojure.java.io :as io]
     [leiningen.felix.data :as data]
     [leiningen.felix.util :as util]))
 
@@ -18,12 +19,25 @@
            "-A" user-agent
            (data/download-url proj)))
 
-(defn -move
+(defn -cache
   [proj args]
-  (util/sh (util/get-output-flag args) "mkdir" "-pv" (data/install-dir proj))
+  (util/sh (util/get-output-flag args) "mkdir" "-pv" (data/cache-dir proj))
   (util/sh (util/get-output-flag args) "mv" "-v"
                                        (data/dist-filename proj)
-                                       (data/install-dir proj)))
+                                       (data/cache-dir proj)))
+
+(defn -download-to-cache
+  [proj args]
+  (when-not (.exists (io/as-file (data/cached-felix proj)))
+    (-download proj args)
+    (-cache proj args)))
+
+(defn -copy
+  [proj args]
+  (util/sh (util/get-output-flag args) "mkdir" "-pv" (data/install-dir proj))
+  (util/sh (util/get-output-flag args) "cp" "-v"
+                                       (data/cached-felix proj)
+                                       (data/zip-filename proj)))
 
 (defn run
   "Usage: lein felix download
@@ -42,10 +56,11 @@
   * :felix :download :host
   * :felix :download :dist-name
   * :felix :version
+  * :felix :cache-dir
   * :felix :install-dir"
   [proj args]
   (case (util/subcommand args)
     :help (util/help #'run)
     (do
-      (-download proj args)
-      (-move proj args))))
+      (-download-to-cache proj args)
+      (-copy proj args))))
