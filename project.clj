@@ -4,7 +4,7 @@
        ns
        "\u001B[35m]\u001B[33m λ\u001B[m=> "))
 
-(defproject lein-felix "0.3.0"
+(defproject lein-felix "0.4.0-SNAPSHOT"
   :description "A lein plugin for the Apache Felix OSGi project"
   :url "https://github.com/starship-tools/lein-felix"
   :license {
