@@ -1,5 +1,6 @@
 (ns leiningen.felix.command.bundle
   (:require
+    [clojure.java.io :as io]
     [leiningen.felix.command.pom :as pom]
     [leiningen.felix.data :as data]
     [leiningen.felix.util :as util]))
@@ -58,11 +59,13 @@
   [proj [subcommand & args]]
   (case (util/subcommand subcommand)
     :help (util/help #'install)
-    (let [option args]
-      (util/sh (util/get-output-flag option)
-               "rm" "-v" (format "%s/%s"
-                                 (data/bundle-dir proj)
-                                 (util/jarball proj))))))
+    (let [option args
+          filename (format "%s/%s"
+                           (data/bundle-dir proj)
+                           (util/jarball proj))]
+      (when (.exists (io/as-file filename))
+        (util/sh (util/get-output-flag option)
+                 "rm" "-v" filename)))))
 
 (defn run
   "Usage: lein felix bundle [SUBCOMMAND]

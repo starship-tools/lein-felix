@@ -55,8 +55,9 @@
   (case (util/subcommand args)
     :help (util/help #'uninstall)
     (let [script (data/felix-script proj)]
-      (println (format "Removing '%s' ..." script))
-      (util/sh (util/get-output-flag (rest args)) "rm" "-v" script))))
+      (when (.exists (io/as-file script))
+        (println (format "Removing '%s' ..." script))
+        (util/sh (util/get-output-flag (rest args)) "rm" "-v" script)))))
 
 (defn run
   "Usage: lein felix script [SUBCOMMAND]
