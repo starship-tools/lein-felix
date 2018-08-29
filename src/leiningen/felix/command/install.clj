@@ -26,8 +26,8 @@
     (do
       (download/run proj args)
       (unpack/run proj args)
-      (script/run proj (concat ["install"] args))
       (cljosgi/run proj (concat ["install"] args))
+      (script/run proj (concat ["install"] args))
       (println "Felix setup completed.")
       (println (format "You can now start the Felix shell with '%s'."
                        (data/felix-script proj))))))
