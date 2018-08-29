@@ -23,8 +23,7 @@ and clojure.osgi releases:
 
 | lein-felix     | Apache Felix | Apache Maven Bundle Plugin | Clojure | clojure.osgi |
 |----------------|--------------|----------------------------|---------|--------------|
-| 0.4.0          | 6.0.1        | 3.5.1                      | 1.9.0   | 1.9.0-3      |
-| 0.3.0          | 5.6.10       | 3.5.1                      | 1.9.0   | 1.9.0-3      |
+| 0.3.0          | 5.6.10       | 3.5.1                      | 1.9.0   | 1.9.0-2      |
 | 0.1.0, 0.2.0   | 5.6.10       | 3.5.0                      | 1.8.0   | 1.8.0-1      |
 
 
@@ -53,7 +52,7 @@ install of Felix:
      :download {
        :host "http://apache.claz.org"
        :dist-name "org.apache.felix.main.distribution"}
-     :version "6.0.1"
+     :version "5.6.10"
      :jar "bin/felix.jar"
      :script {
        :install-dir "bin"
