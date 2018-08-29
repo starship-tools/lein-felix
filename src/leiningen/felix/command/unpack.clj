@@ -26,5 +26,6 @@
       (println "Unpacking Felix ...")
       (util/sh (util/get-output-flag args)
                "unzip"
-                (data/zip-filename proj)
-                "-d" (data/install-dir proj)))))
+               "-o"
+               (data/zip-filename proj)
+               "-d" (data/install-dir proj)))))
