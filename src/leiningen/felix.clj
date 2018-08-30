@@ -22,7 +22,7 @@
        :filename-tmpl "%s-%s.zip" ; dist-name, version
        :url-tmpl "%s/dist/felix/%s" ; host, dist-filename
        }
-     :version "5.6.10"
+     :version "6.0.1"
      :install-dir "felix"
      :cache-dir "~/.lein-felix/felix"
      :working-dir-tmpl "%s/felix-framework-%s" ; install-dir, version
@@ -32,7 +32,7 @@
        :install-dir "bin"
        :name "felix"}
      :clojure-osgi {
-       :id 'com.theoryinpractise/clojure.osgi}}})
+       :id 'clojusc/clojure.osgi}}})
 
 (defn felix
   "Usage: lein felix [COMMAND]
