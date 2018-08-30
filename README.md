@@ -27,9 +27,9 @@ and clojure.osgi releases:
 | 0.3.0          | 5.6.10       | 3.5.1               | 1.8.0   | 1.8.0-1          |
 | 0.1.0, 0.2.0   | 5.6.10       | 3.5.0               | 1.8.0   | 1.8.0-1          |
 
-**Important Note**: Due to Apache mirrors' archiving practices, versions 0.1.0 and 0.2.0 
+**Important Note**: Due to Apache mirrors' archiving practices, versions 0.1.0 and 0.2.0
 no longer work; version 0.3.0 was released after the Felix download host was changed to
-point to the Apache archives host, so it should be good for future use (as long as 
+point to the Apache archives host, so it should be good for future use (as long as
 Apache doesn't change the host or the URL path!).
 
 
@@ -149,6 +149,8 @@ upon the following (under the covers):
 
 * The original [clojure.osgi][orig-clj-osgi]
 * [Mark Derricutt](https://github.com/talios)'s fork of [clojure.osgi][clj-osgi]
+* The Clojure-Aided Enrichment Center [fork of clojure.osgi][clojusc-osgi] with
+  fixes needed when used by `lein`
 * The Apache Felix Project's [Maven Bundle Plugin][mvn-felix]
 
 
@@ -172,3 +174,4 @@ Licensed under the Apache License, Version 2.0.
 [orig-clj-osgi]: https://github.com/aav/clojure.osgi
 [clj-osgi]: https://github.com/talios/clojure.osgi
 [mvn-felix]: http://felix.apache.org/documentation/subprojects/apache-felix-maven-bundle-plugin-bnd.html
+[clojusc-osgi]: https://github.com/clojusc/osgi
