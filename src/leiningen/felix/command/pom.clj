@@ -12,7 +12,7 @@
   [proj]
   (let [profile-kws (project/non-leaky-profiles proj)]
     (-> proj
-        (project/unmerge-profiles profile-kws)
+        util/get-merged-project
         (vary-meta assoc :leiningen.pom/original-project proj))))
 
 (defn project->sexp

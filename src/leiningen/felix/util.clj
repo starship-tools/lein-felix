@@ -3,7 +3,8 @@
     [clojure.java.io :as io]
     [clojure.java.shell :as shell]
     [clojure.string :as string]
-    [leiningen.core.main :as lein]))
+    [leiningen.core.main :as lein]
+    [leiningen.core.project :as project]))
 
 (defn deep-merge
   "Recursively merges maps. If values are not maps, the last value wins."
@@ -57,3 +58,9 @@
        (map #(when (= (first %) dep-symbol) (second %)))
        (remove nil?)
        first))
+
+(defn get-merged-project
+  [proj]
+  (project/unmerge-profiles
+    proj
+    (project/non-leaky-profiles proj)))

@@ -1,6 +1,7 @@
 (ns leiningen.felix.command.bundle
   (:require
     [clojure.java.io :as io]
+    [leiningen.jar :as lein-jar]
     [leiningen.felix.command.pom :as pom]
     [leiningen.felix.data :as data]
     [leiningen.felix.util :as util]))
@@ -9,11 +10,11 @@
   "Usage: lein felix bundle create
 
   Create an OSGi bundle for the project."
-  [proj args]
-  (case (util/subcommand args)
+  [proj [subcommand & args]]
+  (case (util/subcommand subcommand)
     :help (util/help #'create)
-    (let [jar (first args)
-          option [(second args)]]
+    (let [option args]
+      (lein-jar/jar (util/get-merged-project proj))
       (pom/run proj args)
       (util/sh (util/get-output-flag option)
                "mvn" "-e" "org.apache.felix:maven-bundle-plugin:bundle"))))
