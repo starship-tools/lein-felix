@@ -58,13 +58,13 @@ install of Felix:
      :download {
        :host "https://archive.apache.org"
        :dist-name "org.apache.felix.main.distribution"}
-     :version "5.6.10"
+     :version "6.0.1"
      :jar "bin/felix.jar"
      :script {
        :install-dir "bin"
        :name "felix"}
      :clojure-osgi {
-       :id 'com.theoryinpractise/clojure.osgi}}})
+       :id 'clojusc/clojure.osgi}}})
 ```
 
 These may be overridden in a map associated with the key `:felix` in a
